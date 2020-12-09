@@ -27,6 +27,18 @@ public class PassportValidator {
     /**
      * This method populates the list of passport fields.
      */
+    /*
+    Valid ranges
+    byr: four digits, 1920-2002
+    iyr: four digits, 2010-2020
+    eyr: four digits, 2020-2030
+    hgt: either 150-193cm or 59-76in
+    hcl: # followed by six characters (0-9) or (a-f)
+    ecl: exactly one of amb blu brn gry grn hzl oth
+    pid: nine digit number, including leading zeroes
+ */
+
+    // Gör om till HashMap istället.
     public void populate(){
         requiredPassInfo.add("byr"); requiredPassInfo.add("iyr"); requiredPassInfo.add("eyr");
         requiredPassInfo.add("hgt");requiredPassInfo.add("hcl"); requiredPassInfo.add("ecl");
@@ -50,43 +62,56 @@ public class PassportValidator {
     public int partTwo(String file){
         populate();
         collectInput(file);
-        int validCounter = 0;
+        int validCounter1 = 0;
+        int validCounter2 = 0;
+        int[] results = null;
         for(int i = 0; i < passports.size(); i++){
             if(passportIsValidPartTwo(passports.get(i))){
-                validCounter++;
+                validCounter1++;
             }
         }
-        return validCounter;
+        results[0] = validCounter1;
+        results[1] = validCounter2;
+        System.out.println(results);
+        return validCounter1;
     }
 
-    /*
-    Valid ranges
-    byr: four digits, 1920-2002
-    iyr: four digits, 2010-2020
-    eyr: four digits, 2020-2030
-    hgt: either 150-193cm or 59-76in
-    hcl: # followed by six characters (0-9) or (a-f)
-    ecl: exactly one of amb blu brn gry grn hzl oth
-    pid: nine digit number, including leading zeroes
-    */
-    public boolean passportIsValidPartTwo(HashMap<String,String> input){
-        return false;
-    }
-    public boolean passportIsValidPartOne(HashMap<String, String> input){
+    // Gör om till validator för bägge parts på en gång. Kolla om vali innuti if-satsen!
+    // Gör en for-each loop som kollar mor requiredPassInfos keyset istället för ArrayList.
+    // kanske separat funktion för att kolla att värden stämmer (blir för lång annars)
+     public boolean passportIsValidPartOne(HashMap<String, String> input){
         var passport = true;
         for(int i = 0; i< requiredPassInfo.size(); i++){
             //String result = input.get(info);
             if(!input.containsKey(requiredPassInfo.get(i))){
                 passport = false;
-                }
+            }
         }
         return passport;
+     }
+
+    /*
+ Valid ranges
+ byr: four digits, 1920-2002
+ iyr: four digits, 2010-2020
+ eyr: four digits, 2020-2030
+ hgt: either 150-193cm or 59-76in
+ hcl: # followed by six characters (0-9) or (a-f)
+ ecl: exactly one of amb blu brn gry grn hzl oth
+ pid: nine digit number, including leading zeroes
+ */
+    // Ta bort den här.
+    public boolean validValue(String key, String value){
+        var isValid = true;
+
+        if(!((key == "byr") && (value.length() == 4) && (Integer.valueOf(value) > 1919) &&(Integer.valueOf(value) < 2003))){
+            isValid = false;
+        }
+
+        return isValid;
     }
 
-    // Obs! Läser in tomma rader också. Nej, fixat, men varje rad i eget element i array.
-    // Fixa: varje pass en egen hashmap, alla hashmaps i en array.
-
-    /**
+  /**
      * Method to collect passport data from a textfile.
      * Parses the data and stores each passport as a HashMap inside the class ArrayList passports.
      *
@@ -134,9 +159,3 @@ public class PassportValidator {
         System.out.println("Part two: ");
     }
 }
-
-/*
-Collect data from input.txt
-Each passport is represented in the form of key:value and pairs are separated by space or newline.
-Passports are separated by blank lines.
- */

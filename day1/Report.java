@@ -1,13 +1,11 @@
+package day1;
+
 import java.io.*;
 import java.util.ArrayList;
 
 class Report {
     private ArrayList<Integer> numbers = new ArrayList<>();
     private int expected = 2020;
-
-    public void Report() {
-        
-    }
 
     public void readFile(String file){
 
@@ -21,10 +19,10 @@ class Report {
           while ((strCurrentLine = objReader.readLine()) != null) {
             numbers.add(Integer.valueOf(strCurrentLine));
             }
-    
-          }catch (IOException e) {
+            objReader.close();
+        }catch (IOException e) {
             e.printStackTrace();
-          }
+        }
     }
 
     public void solvePartOne(){

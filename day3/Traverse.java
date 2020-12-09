@@ -39,10 +39,7 @@ public class Traverse {
     }
 
     public boolean isTreePresent(char input){
-        if(input == '#'){
-            return true;
-        }
-        return false;
+        return input == '#';
     }
 
     public ArrayList<String> readFile(String file){

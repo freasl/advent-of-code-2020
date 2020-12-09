@@ -16,7 +16,7 @@ import java.util.HashMap;
 public class PassportValidatorTest {
 
     /**
-     * Set up variables to be available for each test case.
+     * Creates a valid and an invalid passport for testing.
      */
 
     public HashMap<String, String> setUp(String input){
@@ -39,7 +39,7 @@ public class PassportValidatorTest {
     }
 
     /**
-     * Assert that a passport is valid.
+     * Assert that a valid passport returns true for part one.
      */
     @Test
     public void assertValidPassportIsValidInPartOne(){
@@ -52,6 +52,9 @@ public class PassportValidatorTest {
         assertTrue(test.passportIsValidPartOne(validPassport));
     }
 
+    /**
+     * Assert that an invalid passport returns false for part one.
+     */
     @Test
     public void assertInvalidPassportIsInvalidInPartOne(){
         // Arrange
