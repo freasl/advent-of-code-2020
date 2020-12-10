@@ -4,6 +4,13 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+/**
+ * Advent of Code 2020, day 5
+ * Tests for boardingpass...well, it's a start anyway :p
+ *
+ * @author Fredrik Åslund
+ * @version 2020-12-10
+ */
 public class BoardingPassTest {
 
 

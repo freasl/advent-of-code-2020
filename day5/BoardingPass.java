@@ -1,5 +1,9 @@
 package day5;
 
+/**
+ *  This class contains the information of a boardingpass
+ *  Methods
+ */
 public class BoardingPass {
     private String input;
     private int row;
@@ -13,10 +17,15 @@ public class BoardingPass {
         this.rowsOnPlane = rowsOnPlane -1;
         this.columnsOnPlane = columnsOnPlane -1;
         this.row = findRow(input);
-        this.column = findColumn();
+        this.column = findColumn(input);
         this.seatId = findSeatId();
     }
 
+    /**
+     * Finds the correct row for the boardingpass
+     * @param input the boardingpass binary input (e.g. "FBFBBFFRLR")
+     * @return
+     */
     public int findRow(String input){
         var high = this.rowsOnPlane;
         var low = 0;
@@ -40,7 +49,13 @@ public class BoardingPass {
         }
         return theRow;
     }
-    public int findColumn(){
+
+    /**
+     * Finds the correct column for the boardingpass
+     * @param input the boardingpass binary input (e.g. "FBFBBFFRLR")
+     * @return
+     */
+    public int findColumn(String input){
         var high = this.columnsOnPlane;
         var low = 0;
         int theColumn = 0;
@@ -63,6 +78,11 @@ public class BoardingPass {
         }
         return theColumn;
     }
+
+    /**
+     * Calculates the the seat ID as row * 8 + column
+     * @return the seat ID of the boardingpass.
+     */
     public int findSeatId(){
         return (this.row*8)+this.column;
     }
@@ -83,24 +103,4 @@ public class BoardingPass {
         return seatId;
     }
 
-    public int getRowsOnPlane() {
-        return rowsOnPlane +1;
-    }
-
-    // Setter methods
-    public void setInput(String input) {
-        this.input = input;
-    }
-
-    public void setRow(int row) {
-        this.row = row;
-    }
-
-    public void setColumn(int column) {
-        this.column = column;
-    }
-
-    public void setSeatId(int seatId) {
-        this.seatId = seatId;
-    }
 }
