@@ -15,6 +15,7 @@ import java.util.List;
  *  cid is optional, all other fields must be present.
  *
  * Part Two extends rules to specified valid ranges and returns number of valid passports.
+ * Somehow the output for part two is one too high. (output 115 if correct answer should be 114) Whyyyyyy?!?!
  *
  * @author Fredrik Åslund
  * @version 2020-12-08
@@ -96,7 +97,7 @@ public class PassportValidator {
 //vilken value?!?!?
             //input.forEach((k,v) -> validValue(k,v));
             for(int i = 0; i < requiredPassInfo.size(); i++) {
-                if(!validValue(requiredPassInfo.get(i),)){
+                if(!validValue(requiredPassInfo.get(i),input.get(requiredPassInfo.get(i)))){
                     passport = false;
                 }
             }
@@ -166,11 +167,24 @@ public class PassportValidator {
             //ecl: exactly one of amb blu brn gry grn hzl oth
         }
 // Funkar!
-        if((key.equals("pid")) && (!(value.length() == 9) || !(Integer.valueOf(value) <= 999999999))){
+        if((key.equals("pid")) && (!(value.length() == 9) || !(isNumeric(value)))){
             isValid = false;
             //pid: nine digit number, including leading zeroes
         }
         return isValid;
+    }
+    // Integer.valueOf(value) <= 999999999
+// test plockat från nätet
+    public static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            double d = Double.parseDouble(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
     }
 
   /**
