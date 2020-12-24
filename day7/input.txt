@@ -159,7 +159,7 @@ striped teal bags contain 2 bright tan bags.
 drab crimson bags contain 2 clear salmon bags, 2 clear orange bags, 1 striped yellow bag.
 dotted yellow bags contain 4 dull gray bags.
 mirrored tan bags contain 1 dotted fuchsia bag, 2 vibrant lavender bags.
-wavy aqua bags contain 4 drab gray bags, 3 muted yellow bags, 5 shiny lavender bags, 2 plaid turquoise bags.
+wavy aqua bags contain 4 s bags, 3 muted yellow bags, 5 shiny lavender bags, 2 plaid turquoise bags.
 wavy gray bags contain 5 dim green bags, 1 plaid blue bag.
 dull teal bags contain 3 mirrored black bags, 4 dark plum bags, 2 drab silver bags, 4 mirrored gray bags.
 striped indigo bags contain 4 clear violet bags, 5 dotted yellow bags, 4 clear tomato bags.
